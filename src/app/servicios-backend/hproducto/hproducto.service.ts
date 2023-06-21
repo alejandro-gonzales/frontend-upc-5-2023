@@ -16,20 +16,20 @@ export class HproductoService {
 
   constructor(private http: HttpClient) { }
 
-  public GetHProducto(): Observable<HttpResponse<any>> {
-
+  public GetHProducto(): Observable<HttpResponse<any>> 
+  {
     return this.http
-        .get<any>(this.URL_GET,
-            { observe: 'response' })
-        .pipe();
+      .get<any>(this.URL_GET,
+        { observe: 'response' })
+      .pipe();
   }
 
-  public AddHProducto(entidad): Observable<HttpResponse<any>> {
-
+  public AddHProducto(entidad): Observable<HttpResponse<any>> 
+  {
     return this.http
-        .post<any>(this.URL_ADD_HPRODUCTO, entidad,
-            { observe: 'response' })
-        .pipe();
-}
+      .post<any>(this.URL_ADD_HPRODUCTO, entidad,
+        { observe: 'response' })
+      .pipe();
+  }
 
 }
