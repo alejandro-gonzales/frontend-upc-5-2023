@@ -4,141 +4,63 @@
       <h1><b>Detalle Producto (HProducto)</b></h1>
     </ion-title>
   </ion-toolbar>
-</ion-header><br><br>
+</ion-header><br>
 
-<ion-content > 
+
+
+<ion-row>
+  <ion-col class="ion-text-center">
+    <ion-label color="primary"><b>Ingrese la Cantidad</b></ion-label>
+    <ion-item class="ion-text-center">
+      <ion-input type="text" hidden [(ngModel)]="idHProducto"></ion-input>
+      <ion-input type="text" [(ngModel)]="cantidad"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col class="ion-text-center">
+    <ion-label color="primary"><b>Ingrese ID Producto</b></ion-label>
+    <ion-item class="ion-text-center">
+      <ion-input type="text" [(ngModel)]="IdProducto"></ion-input>
+    </ion-item>
+    <!-- <ion-item>
+      <ion-select placeholder="Seleccione el Producto" [(ngModel)]="IdProducto">
+        <ion-select-option *ngFor="let item of listHProducto" value={{item.producto.id}}>{{item.producto.nombre}}</ion-select-option>
+      </ion-select>
+    </ion-item> -->
+  </ion-col>
+  <ion-col class="ion-text-center">
+    <ion-label color="primary"><b>Ingrese ID Carrito</b></ion-label>
+    <ion-item class="ion-text-center">
+      <ion-input type="text" [(ngModel)]="IdCarritoCompra"></ion-input>
+    </ion-item>
+  </ion-col>
+</ion-row>
+<ion-list class="ion-text-center ion-margin-bottom">
+  <ion-row>
+    <ion-col>
+      <ion-button *ngIf="!swGuardarCambios" (click)="addHProducto()">Agregar Detalle</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-list>
+
+
+
+<h1 class="ion-text-center"><b>DETALLE DE PRODUCTOS REGISTRADOS</b></h1><br>
+
+<ion-content>
   <ion-grid>
-    <ion-row>
-      <ion-col class="ion-text-center">
-        <ion-label color="primary"><b>Ingrese la Cantidad</b></ion-label>
-        <ion-item class="ion-text-center">
-          <ion-input type="text" hidden [(ngModel)]="idHProducto"></ion-input>
-          <ion-input type="text" [(ngModel)]="cantidad"></ion-input>
-        </ion-item>
-      </ion-col>
-      <ion-col class="ion-text-center">
-        <ion-label color="primary"><b>Ingrese ID Producto</b></ion-label>
-        <ion-item class="ion-text-center">
-          <ion-input type="text" [(ngModel)]="IdProducto"></ion-input>
-        </ion-item>
-      </ion-col>
-      <ion-col class="ion-text-center">
-        <ion-label color="primary"><b>Ingrese ID Carrito</b></ion-label>
-        <ion-item class="ion-text-center">
-          <ion-input type="text" [(ngModel)]="IdCarritoCompra"></ion-input>
-        </ion-item>
+    <ion-row class="ion-text-center">
+      <ion-col size="4" *ngFor="let item of listHProducto">
+        <ion-card class="ion-text-center">
+          <ion-card-header>
+            <ion-card-title><b>Producto: </b>{{item.producto.nombre}}</ion-card-title>
+            <ion-card-title><b>Cantidad: </b>{{item.cantidad}}</ion-card-title>
+          </ion-card-header>
+          <ion-button size="small" color="warning" fill="clear">Editar</ion-button>
+          <ion-button size="small" color="danger" fill="clear">Eliminar</ion-button>
+        </ion-card>
       </ion-col>
     </ion-row>
-    <ion-list class="ion-text-center ion-margin-bottom">
-      <ion-row>
-        <ion-col>
-          <ion-button *ngIf="!swGuardarCambios" (click)="addHProducto()">Agregar Detalle</ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-list>
   </ion-grid>
-
-  <div class="ion-text-center">
-    <ion-grid >
-      <ion-row>
-        <ion-col>
-          <ion-list lines="full">
-            <ion-item>
-              <ion-list-header class="ion-text-center">
-                <ion-label color="primary"><h1>Cantidad</h1></ion-label>
-              </ion-list-header>
-            </ion-item>
-            <ion-item *ngFor="let item of listHProducto">
-              <ion-label class="ion-text-center">
-                <h2>{{item.cantidad}}</h2>
-              </ion-label>
-            </ion-item>
-          </ion-list>
-        </ion-col>
-        <ion-col>
-          <ion-list lines="full">
-            <ion-item>
-              <ion-list-header class="ion-text-center">
-                <ion-label color="primary"><h1>Producto</h1></ion-label>
-              </ion-list-header>
-            </ion-item>
-            <ion-item *ngFor="let item of listHProducto">
-              <ion-label class="ion-text-center">
-                <h2>{{item.idProducto}}</h2>
-              </ion-label>
-            </ion-item>
-          </ion-list>
-        </ion-col>
-        <ion-col>
-          <ion-list lines="full">
-            <ion-item>
-              <ion-list-header class="ion-text-center">
-                <ion-label color="primary"><h1>Carrito</h1></ion-label>
-              </ion-list-header>
-            </ion-item>
-            <ion-item *ngFor="let item of listHProducto">
-              <ion-label class="ion-text-center">
-                <h2>{{item.idCarritoCompra}}</h2>
-              </ion-label>
-            </ion-item>
-          </ion-list>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
 </ion-content>
-
-
-
-<!-- <ion-content padding>  
-  <div class="ion-text-center">
-    <ion-grid >
-      <ion-row>
-        <ion-col>
-          <ion-list>
-            <ion-item>
-              <ion-list-header class="ion-text-center">
-                <ion-label color="primary"><h1>Cantidad</h1></ion-label>
-              </ion-list-header>
-            </ion-item>
-            <ion-item *ngFor="let item of listHProducto">
-              <ion-label class="ion-text-center">
-                <h2>{{item.cantidad}}</h2>
-              </ion-label>
-            </ion-item>
-          </ion-list>
-        </ion-col>
-        <ion-col>
-          <ion-list>
-            <ion-item>
-              <ion-list-header class="ion-text-center">
-                <ion-label color="primary"><h1>Producto</h1></ion-label>
-              </ion-list-header>
-            </ion-item>
-            <ion-item *ngFor="let item of listHProducto">
-              <ion-label class="ion-text-center">
-                <h2>{{item.idProducto}}</h2>
-              </ion-label>
-            </ion-item>
-          </ion-list>
-        </ion-col>
-        <ion-col>
-          <ion-list>
-            <ion-item>
-              <ion-list-header class="ion-text-center">
-                <ion-label color="primary"><h1>Carrito</h1></ion-label>
-              </ion-list-header>
-            </ion-item>
-            <ion-item *ngFor="let item of listHProducto">
-              <ion-label class="ion-text-center">
-                <h2>{{item.idCarritoCompra}}</h2>
-              </ion-label>
-            </ion-item>
-          </ion-list>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
-</ion-content> -->
 
 
