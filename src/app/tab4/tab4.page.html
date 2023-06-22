@@ -19,9 +19,9 @@
   <ion-col class="ion-text-center">
     <ion-label color="primary"><b>Ingrese ID Producto</b></ion-label>
     <ion-item class="ion-text-center">
-      <ion-input type="text" [(ngModel)]="IdProducto"></ion-input>
+      <ion-input type="text" [(ngModel)]="idProducto"></ion-input>
     </ion-item>
-    <!-- <ion-item>
+    <!-- <ion-item>----COMBO SELECCIONADOR
       <ion-select placeholder="Seleccione el Producto" [(ngModel)]="IdProducto">
         <ion-select-option *ngFor="let item of listHProducto" value={{item.producto.id}}>{{item.producto.nombre}}</ion-select-option>
       </ion-select>
@@ -30,7 +30,7 @@
   <ion-col class="ion-text-center">
     <ion-label color="primary"><b>Ingrese ID Carrito</b></ion-label>
     <ion-item class="ion-text-center">
-      <ion-input type="text" [(ngModel)]="IdCarritoCompra"></ion-input>
+      <ion-input type="text" [(ngModel)]="idCarritoCompra"></ion-input>
     </ion-item>
   </ion-col>
 </ion-row>
@@ -38,6 +38,7 @@
   <ion-row>
     <ion-col>
       <ion-button *ngIf="!swGuardarCambios" (click)="addHProducto()">Agregar Detalle</ion-button>
+      <ion-button *ngIf="swGuardarCambios" (click)="guardarCambios()" color="warning">Guardar Cambios</ion-button>
     </ion-col>
   </ion-row>
 </ion-list>
@@ -55,8 +56,8 @@
             <ion-card-title><b>Producto: </b>{{item.producto.nombre}}</ion-card-title>
             <ion-card-title><b>Cantidad: </b>{{item.cantidad}}</ion-card-title>
           </ion-card-header>
-          <ion-button size="small" color="warning" fill="clear">Editar</ion-button>
-          <ion-button size="small" color="danger" fill="clear">Eliminar</ion-button>
+          <ion-button size="small" color="warning" (click)="updateHProducto(item)" fill="clear">Editar</ion-button>
+          <ion-button size="small" color="danger" (click)="deleteHProducto(item)" fill="clear">Eliminar</ion-button>
         </ion-card>
       </ion-col>
     </ion-row>

@@ -1,5 +1,5 @@
-import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -13,8 +13,8 @@ export class HproductoService {
   URL_GET_HPRODUCTO = this.PATH_BACKEND + "/api/HProducto"
   URL_GET_BY_ID = this.PATH_BACKEND + "/api/HProducto/GetHProductoById"
   URL_ADD_HPRODUCTO = this.PATH_BACKEND + "/api/HProducto/AddHProducto"
-
-  
+  URL_UPDATE_HPRODUCTO = this.PATH_BACKEND + "/api/HProducto/UpdateHProducto"
+  URL_DELETE_HPRODUCTO = this.PATH_BACKEND + "/api/HProducto/DeleteHProducto"
 
   constructor(private http: HttpClient) { }
 
@@ -31,6 +31,25 @@ export class HproductoService {
     return this.http
       .post<any>(this.URL_ADD_HPRODUCTO, entidad,
         { observe: 'response' })
+      .pipe();
+  }
+
+  public UpdateHProducto(entidad): Observable<HttpResponse<any>> {
+
+    return this.http
+      .post<any>(this.URL_UPDATE_HPRODUCTO, entidad,
+        { observe: 'response' })
+      .pipe();
+  }
+
+  public DeleteHProducto(item): Observable<HttpResponse<any>> {
+
+    let params = new HttpParams();
+    params = params.set('id', item.id);
+
+    return this.http
+      .post<any>(this.URL_DELETE_HPRODUCTO,  "", 
+        {params: params, observe: 'response' })
       .pipe();
   }
 

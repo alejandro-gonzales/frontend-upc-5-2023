@@ -65,7 +65,7 @@ export class Tab3Page {
 
   public guardarCambios(){
     this.swGuardarCambios = false;
-    if (this.nombreProducto.length > 0) {
+    if (this.nombreProducto.length > 0 && this.idCategoria.length > 0) {
         var entidad = {
             id: this.idProducto,
             nombre : this.nombreProducto,
@@ -97,8 +97,8 @@ export class Tab3Page {
 
   public updateProducto(item){
     console.log(item)
-    this.idProducto = item.id //oculto
-    this.idCategoria = item.idCategoria //input
+    this.idProducto = item.id + ""//oculto
+    this.idCategoria = item.idCategoria + ""//input
     this.nombreProducto = item.nombre //input
     this.swGuardarCambios = true;
   }

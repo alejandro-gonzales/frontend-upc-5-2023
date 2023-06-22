@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { UsuariosService } from '../servicios-backend/usuarios/usuarios.service';
 import { HttpResponse } from '@angular/common/http';
-import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab2',
