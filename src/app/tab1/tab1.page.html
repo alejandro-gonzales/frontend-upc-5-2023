@@ -1,12 +1,51 @@
-<ion-header>
-    <ion-toolbar>
-        <ion-title>
-            CRUD Categoria
-        </ion-title>
+<ion-header >
+    <ion-toolbar color="primary">
+      <ion-title color="light" class="ion-text-center">
+        <h1><b>CRUD Categoria</b></h1>
+      </ion-title>
     </ion-toolbar>
-</ion-header>
+  </ion-header><br><br>
 
-<ion-content padding>
+
+  <ion-row>
+    <ion-col class="ion-text-center">
+      <ion-label color="primary"><b>Ingrese el Nombre de la Categoria</b></ion-label>
+      <ion-item class="ion-text-center">
+        <ion-input type="text" hidden [(ngModel)]="idCategoria"></ion-input>
+        <ion-input type="text" [(ngModel)]="nombreCategoria"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-list class="ion-text-center ion-margin-bottom">
+    <ion-row>
+      <ion-col>
+        <ion-button *ngIf="!swGuardarCambios" (click)="addCategoria()">Agregar Categoria</ion-button>
+        <ion-button *ngIf="swGuardarCambios" color="warning" (click)="guardarCambios()">Guardar Cambios</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+  
+  <h1 class="ion-text-center"><b>CATEGORIAS REGISTRADAS</b></h1><br>
+
+
+  <ion-content>
+    <ion-grid>
+      <ion-row class="ion-text-center">
+        <ion-col size="4" *ngFor="let item of listCategoria">
+          <ion-card class="ion-text-center">
+            <ion-card-header>
+              <ion-card-title><b>Id Categoria: </b>{{item.id}}</ion-card-title>
+              <ion-card-title><b>Nombre: </b>{{item.nombre}}</ion-card-title>
+            </ion-card-header>
+            <ion-button size="small" color="warning" fill="clear" (click)="updateCategoria(item)">Editar</ion-button>
+            <ion-button size="small" color="danger" fill="clear" (click)="deleteCategoria(item)">Eliminar</ion-button>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+
+<!-- <ion-content padding>
     <ion-item>
         <ion-input type="text" hidden [(ngModel)]="idCategoria"></ion-input>
         <ion-input type="text" placeholder="Ingrese Categoria" [(ngModel)]="nombreCategoria"></ion-input>
@@ -26,4 +65,4 @@
             </ion-item>
         </ion-list>
     </div>
-</ion-content>
+</ion-content> -->

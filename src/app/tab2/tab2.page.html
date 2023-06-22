@@ -1,18 +1,70 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      CRUD Usuarios
+<ion-header >
+  <ion-toolbar color="primary">
+    <ion-title color="light" class="ion-text-center">
+      <h1><b>CRUD Usuarios</b></h1>
     </ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header><br><br>
 
-<ion-content padding>
+
+<ion-row>
+  <ion-col class="ion-text-center">
+    <ion-label color="primary"><b>Ingrese su Nombre Completo</b></ion-label>
+    <ion-item class="ion-text-center">
+      <ion-input type="text" hidden [(ngModel)]="idUsuario"></ion-input>
+      <ion-input type="text" [(ngModel)]="nombreCompleto"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col class="ion-text-center">
+    <ion-label color="primary"><b>Ingrese Nombre de Usuario</b></ion-label>
+    <ion-item class="ion-text-center">
+      <ion-input type="text" [(ngModel)]="userName"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col class="ion-text-center">
+    <ion-label color="primary"><b>Ingrese su Contraseña</b></ion-label>
+    <ion-item class="ion-text-center">
+      <ion-input type="text" [(ngModel)]="password"></ion-input>
+    </ion-item>
+  </ion-col>
+</ion-row>
+<ion-list class="ion-text-center ion-margin-bottom">
+  <ion-row>
+    <ion-col>
+      <ion-button *ngIf="!swGuardarCambios" (click)="addUsuario()">Agregar Usuario</ion-button>
+      <ion-button *ngIf="swGuardarCambios" color="warning" (click)="guardarCambios()">Guardar Cambios</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-list>
+
+<h1 class="ion-text-center"><b>USUARIOS REGISTRADOS</b></h1><br>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="ion-text-center">
+      <ion-col size="4" *ngFor="let item of listUsuarios">
+        <ion-card class="ion-text-center">
+          <ion-card-header>
+            <ion-card-title><b>Id Usuario: </b>{{item.id}}</ion-card-title>
+            <ion-card-title><b>Nombre Completo: </b>{{item.nombreCompleto}}</ion-card-title>
+            <ion-card-title><b>Username: </b>{{item.userName}}</ion-card-title>
+          </ion-card-header>
+          <ion-button size="small" color="warning" fill="clear" (click)="updateUsuario(item)">Editar</ion-button>
+          <ion-button size="small" color="danger" fill="clear" (click)="deleteUsuario(item)">Eliminar</ion-button>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<!-- <ion-content padding>
   <ion-item>
       <ion-input type="text" placeholder="Ingrese nombreCompleto" [(ngModel)]="nombreCompleto"></ion-input>
       <ion-input type="text" placeholder="Ingrese userName" [(ngModel)]="userName"></ion-input>
       <ion-input type="text" placeholder="Ingrese password" [(ngModel)]="password"></ion-input>
       <div class="item-note" item-end>
-          <ion-button (click)="addUsuario()">Agregar Usuario</ion-button>
+          <ion-button *ngIf="!swGuardarCambios" (click)="addUsuario()">Agregar Usuario</ion-button>
+          <ion-button *ngIf="swGuardarCambios" color="warning" (click)="guardarCambios()">Guardar Cambios</ion-button>
       </div>
   </ion-item>
 <div padding>
@@ -26,4 +78,4 @@
         </ion-item>
     </ion-list>
 </div>
-</ion-content>
+</ion-content> -->

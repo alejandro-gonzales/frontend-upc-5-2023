@@ -1,9 +1,45 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Carrito Compra</ion-title>
+<ion-header >
+  <ion-toolbar color="primary">
+    <ion-title color="light" class="ion-text-center">
+      <h1><b>Carrito Compra</b></h1>
+    </ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header><br><br>
+
+
+<ion-row>
+  <ion-col class="ion-text-center">
+    <ion-label color="primary"><b>Ingrese el Id Usuario</b></ion-label>
+    <ion-item class="ion-text-center">
+      <ion-input type="text" hidden [(ngModel)]="idCarritoCompra"></ion-input>
+      <ion-input type="text" [(ngModel)]="IdUsuario"></ion-input>
+    </ion-item>
+  </ion-col>
+</ion-row>
+<ion-list class="ion-text-center ion-margin-bottom">
+  <ion-row>
+    <ion-col>
+      <ion-button *ngIf="!swGuardarCambios" (click)="addCarritoCompra()">Agregar Carrito</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-list>
+
+<h1 class="ion-text-center"><b>CARRITOS REGISTRADOS</b></h1><br>
+
 
 <ion-content>
-
+  <ion-grid>
+    <ion-row class="ion-text-center">
+      <ion-col size="4" *ngFor="let item of listCarritoCompra">
+        <ion-card class="ion-text-center">
+          <ion-card-header>
+            <ion-card-title><b>Id Carrito: </b>{{item.id}}</ion-card-title>
+            <ion-card-title><b>Nombre: </b>{{item.usuarios.nombreCompleto}}</ion-card-title>
+          </ion-card-header>
+          <ion-button size="small" color="warning" fill="clear">Editar</ion-button>
+          <ion-button size="small" color="danger" fill="clear">Eliminar</ion-button>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
