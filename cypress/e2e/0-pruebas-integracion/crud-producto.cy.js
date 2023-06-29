@@ -22,8 +22,8 @@ describe('CRUD Producto', () => {
         cy.wait(1000);
 
         cy.get('#nombreProducto')
-            .type('add nombreProducto cypress', { delay: 100 })
-            .should('have.value', 'add nombreProducto cypress');
+            .type('add Alejandro cypress', { delay: 100 })
+            .should('have.value', 'add Alejandro cypress');
         cy.wait(500);
 
         cy.get('#idCategoriaProducto').type(102, { delay: 100 }).should('have.value', 102);
@@ -41,7 +41,7 @@ describe('CRUD Producto', () => {
         cy.wait(1000);
 
         cy.get('#nombreProducto').invoke('val', ''); //Vaciar el campo del textfield de nombreProducto
-        cy.get('#nombreProducto').type('update nombreProducto Cypress', { delay: 100 }); //Escribir "UPDATE Cypress en el textfield de nombreCategoria"
+        cy.get('#nombreProducto').type('update Alejandro Cypress', { delay: 100 }); //Escribir "UPDATE Cypress en el textfield de nombreCategoria"
         cy.wait(500);
 
         cy.get('#idCategoriaProducto').invoke('val', ''); //Vaciar el campo del textfield de idCategoriaProducto
